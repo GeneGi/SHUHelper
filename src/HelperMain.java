@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 public class HelperMain extends JFrame {
@@ -33,7 +31,7 @@ public class HelperMain extends JFrame {
             LookAround lookAround = new LookAround();
         });
         MessageBoardButton.addActionListener(e -> {
-            MessageBoard messageBoard = new MessageBoard();
+            ChatRoomClient messageBoard = new ChatRoomClient();
         });
 
 

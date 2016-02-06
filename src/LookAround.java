@@ -1,8 +1,5 @@
 import javax.swing.*;
 
-/**
- * Created by genegi on 16-1-23.
- */
 public class LookAround extends JFrame{
     public LookAround() {
         initUI();
