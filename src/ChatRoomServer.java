@@ -7,19 +7,18 @@ import java.net.Socket;
 import java.util.HashSet;
 
 public class ChatRoomServer {
-    private static final int PORT = 8090;
+    private static final int PORT = 9002;
 
     private static HashSet<String> names = new HashSet<String>();
 
     private static HashSet<PrintWriter> writers = new HashSet<PrintWriter>();
 
     public static void main(String[] args) throws Exception {
-        System.out.println("The chat server is running.");
-        int clientNumber = 0;
+        System.out.println("聊天室服务器正在运行....");
         ServerSocket listener = new ServerSocket(PORT);
         try {
             while (true) {
-                new Handler(listener.accept(), clientNumber++).start();
+                new Handler(listener.accept()).start();
             }
         } finally {
             listener.close();
@@ -29,19 +28,15 @@ public class ChatRoomServer {
     private static class Handler extends Thread {
         private String name;
         private Socket socket;
-        private int clientNumber;
         private BufferedReader in;
         private PrintWriter out;
 
-        public Handler(Socket socket, int clientNumber) {
+        public Handler(Socket socket) {
             this.socket = socket;
-            this.clientNumber = clientNumber;
-            System.out.println("New connection with client# " + clientNumber + " at " + socket);
         }
 
         public void run() {
             try {
-                // Create character streams for the socket.
                 in = new BufferedReader(new InputStreamReader(
                         socket.getInputStream()));
                 out = new PrintWriter(socket.getOutputStream(), true);
@@ -59,8 +54,8 @@ public class ChatRoomServer {
                         }
                     }
                 }
-
-                out.println("NAMEACCEPTED");
+                System.out.println(names.size());
+                out.println("NAMEACCEPTED" + names.size());
                 writers.add(out);
 
                 while (true) {
@@ -77,6 +72,7 @@ public class ChatRoomServer {
             } finally {
                 if (name != null) {
                     names.remove(name);
+                    out.println("REMOVE");
                 }
                 if (out != null) {
                     writers.remove(out);
