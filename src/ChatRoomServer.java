@@ -54,7 +54,6 @@ public class ChatRoomServer {
                         }
                     }
                 }
-                System.out.println(names.size());
                 out.println("NAMEACCEPTED" + names.size());
                 writers.add(out);
 

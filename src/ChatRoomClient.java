@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class ChatRoomClient extends JFrame{
+public class ChatRoomClient extends JFrame implements Runnable{
     BufferedReader in;
     PrintWriter out;
     JTextField inputField;
@@ -62,23 +62,27 @@ public class ChatRoomClient extends JFrame{
 
 
 
-    private void run() throws IOException {
-        String serverAddress = "127.0.0.1";
-        Socket socket = new Socket(serverAddress, 9002);
-        in = new BufferedReader(new InputStreamReader(
-                socket.getInputStream()));
-        out = new PrintWriter(socket.getOutputStream(), true);
+    public void run() {
+        try {
+            String serverAddress = "127.0.0.1";
+            Socket socket = new Socket(serverAddress, 9002);
+            in = new BufferedReader(new InputStreamReader(
+                    socket.getInputStream()));
+            out = new PrintWriter(socket.getOutputStream(), true);
 
-        while (true) {
-            String line = in.readLine();
-            if (line.startsWith("SUBMITNAME")) {
-                out.println(getName());
-            } else if (line.startsWith("NAMEACCEPTED")) {
-                stateArea.setText("当前在线人数:" + line.substring(12));
-                inputField.setEditable(true);
-            } else if (line.startsWith("MESSAGE")) {
-                messageArea.append(line.substring(8) + "\n");
+            while (true) {
+                String line = in.readLine();
+                if (line.startsWith("SUBMITNAME")) {
+                    out.println(getName());
+                } else if (line.startsWith("NAMEACCEPTED")) {
+                    stateArea.setText("当前在线人数:" + line.substring(12));
+                    inputField.setEditable(true);
+                } else if (line.startsWith("MESSAGE")) {
+                    messageArea.append(line.substring(8) + "\n");
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

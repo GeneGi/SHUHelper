@@ -16,22 +16,31 @@ public class HelperMain extends JFrame {
         JButton EncryptedMessageButton = new JButton( "秘密短信" );
         JButton ShareFileButton = new JButton( "文件共享" );
         JButton LookAroundButton = new JButton( "随便看看" );
-        JButton MessageBoardButton = new JButton( "留言板" );
+        JButton ChatRoomButton = new JButton( "聊天室" );
 
         WhatToEatButton.addActionListener(e -> {
-            WhatToEatToday whatToEatToday = new WhatToEatToday();
+            SwingUtilities.invokeLater(() -> {
+                WhatToEatToday whatToEatToday = new WhatToEatToday();
+            });
         });
         EncryptedMessageButton.addActionListener(e -> {
-            EncryptedMessage encryptedMessage = new EncryptedMessage();
+            SwingUtilities.invokeLater(() -> {
+                EncryptedMessage encryptedMessage = new EncryptedMessage();
+            });
         });
         ShareFileButton.addActionListener(e -> {
-            ShareFile shareFile = new ShareFile();
+            SwingUtilities.invokeLater(() -> {
+                ShareFile shareFile = new ShareFile();
+            });
         });
         LookAroundButton.addActionListener(e -> {
-            LookAround lookAround = new LookAround();
+           SwingUtilities.invokeLater(() -> {
+               LookAround lookAround = new LookAround();
+            });
         });
-        MessageBoardButton.addActionListener(e -> {
-            ChatRoomClient messageBoard = new ChatRoomClient();
+        ChatRoomButton.addActionListener(e -> {
+            Thread thread = new Thread(new ChatRoomClient());
+            thread.run();
         });
 
 
@@ -39,7 +48,7 @@ public class HelperMain extends JFrame {
         add(EncryptedMessageButton);
         add(ShareFileButton);
         add(LookAroundButton);
-        add(MessageBoardButton);
+        add(ChatRoomButton);
     }
 
 
