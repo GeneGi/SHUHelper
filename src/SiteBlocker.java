@@ -87,7 +87,7 @@ public class SiteBlocker extends JFrame{
         } else if ((OS.indexOf("win")) >= 0) {
             fileName = "C://WINDOWS//system32//drivers//etc//hosts";
         } else {
-            System.out.println("未识别的操作系统!");
+            JOptionPane.showMessageDialog(this, "未识别的操作系统!");
         }
         return new File(fileName);
     }
@@ -99,7 +99,7 @@ public class SiteBlocker extends JFrame{
             output.append("127.0.0.1    " + site + "\n");
             output.close();
         } catch (IOException e) {
-            System.out.println("没有足够的权限,请使用管理员权限运行");
+            JOptionPane.showMessageDialog(this, "没有足够的权限,请使用管理员权限运行");
         }
     }
 
@@ -112,7 +112,7 @@ public class SiteBlocker extends JFrame{
             output.append("127.0.0.1    " + site + "    #" + time + "\n");
             output.close();
         } catch (IOException e) {
-            System.out.println("没有足够的权限,请使用管理员权限运行");
+            JOptionPane.showMessageDialog(this, "没有足够的权限,请使用管理员权限运行");
         }
 
     }
@@ -160,7 +160,7 @@ public class SiteBlocker extends JFrame{
             reader.close();
             tempFile.renameTo(hosts);
         } catch (IOException e) {
-            System.out.println("取消失败!");
+            JOptionPane.showMessageDialog(this, "取消失败");
         }
     }
 
@@ -183,7 +183,7 @@ public class SiteBlocker extends JFrame{
                 line = bufferedReader.readLine();
             }
         } catch (IOException e) {
-            System.out.println("获取屏蔽列表失败");
+            JOptionPane.showMessageDialog(this, "获取屏蔽列表失败");
         }
         return list;
     }
