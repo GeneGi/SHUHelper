@@ -40,9 +40,6 @@ public class SiteBlocker extends JFrame{
         setSize(400, 300);
 
         blockSite.addActionListener(e -> {
-//            String site = JOptionPane.showInputDialog("请输入你要屏蔽的网站地址:");
-//            block(site);
-//            showBlockList();
             blockSiteFrame.setVisible(true);
         });
 
@@ -77,6 +74,8 @@ public class SiteBlocker extends JFrame{
             long time = Long.parseLong(inputBlockTime.getText());
             block(site, time);
             showBlockList();
+            inputBlockSite.setText("");
+            inputBlockTime.setText("");
             blockSiteFrame.setVisible(false);
         });
     }
@@ -132,7 +131,8 @@ public class SiteBlocker extends JFrame{
                     Date now = new Date();
                     long blockTime = Long.parseLong(blockLineParameter[8].substring(1));
                     if (now.getTime() < blockTime) {
-                        JOptionPane.showMessageDialog(this, "时间未到,无法取消");
+                        long remainTime = (blockTime - now.getTime()) / 1000;
+                        JOptionPane.showMessageDialog(this, "时间未到,无法取消,剩余:" + remainTime + "s");
                     }
                     else {
                         unblock(site);
@@ -198,7 +198,7 @@ public class SiteBlocker extends JFrame{
         textArea.setText("已屏蔽的列表: \n");
         ArrayList<String> list = getBlockList();
         for (String line : list) {
-            textArea.append(line);
+            textArea.append(line + "\n");
             System.out.println(line);
         }
     }
