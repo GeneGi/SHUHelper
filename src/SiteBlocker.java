@@ -34,14 +34,12 @@ public class SiteBlocker extends JFrame{
         add(north, BorderLayout.NORTH);
         add(textArea, BorderLayout.CENTER);
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         setTitle("网站屏蔽");
         setVisible(true);
         setSize(400, 300);
 
-        blockSite.addActionListener(e -> {
-            blockSiteFrame.setVisible(true);
-        });
+        blockSite.addActionListener(e -> blockSiteFrame.setVisible(true));
 
         unblockSite.addActionListener(e -> {
             String site = JOptionPane.showInputDialog("请输入你要取消屏蔽的网站地址:");
@@ -169,13 +167,10 @@ public class SiteBlocker extends JFrame{
     public boolean isBlock(String s) {
         Pattern pattern = Pattern.compile("127\\.0\\.0\\.1\\s+w.+\\s#\\d+");
         Matcher matcher = pattern.matcher(s);
-        if (matcher.matches()) {
-            return true;
-        }
-        return false;
+        return matcher.matches();
 
     }
-    private ArrayList getBlockList() {
+    private ArrayList<String> getBlockList() {
         ArrayList<String> list = new ArrayList<>();
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(hosts));
@@ -183,14 +178,12 @@ public class SiteBlocker extends JFrame{
             while (line != null) {
                 if (isBlock(line)) {
                     String[] blockSiteParameter = line.split("\\s");
-                    for (int i=0; i<blockSiteParameter.length; i++) {
-                        System.out.println(blockSiteParameter[i]);
-                    }
                     list.add(blockSiteParameter[4]);
                 }
                 line = bufferedReader.readLine();
             }
         } catch (IOException e) {
+            System.out.println("获取屏蔽列表失败");
         }
         return list;
     }
@@ -199,7 +192,6 @@ public class SiteBlocker extends JFrame{
         ArrayList<String> list = getBlockList();
         for (String line : list) {
             textArea.append(line + "\n");
-            System.out.println(line);
         }
     }
 
