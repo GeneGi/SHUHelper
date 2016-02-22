@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -73,7 +72,6 @@ public class SiteBlocker extends JFrame{
             output.close();
         } catch (IOException e) {
             System.out.println("没有足够的权限,请使用管理员权限运行");
-            e.printStackTrace();
         }
     }
 
@@ -94,40 +92,11 @@ public class SiteBlocker extends JFrame{
             writer.close();
             reader.close();
             tempFile.renameTo(hosts);
-
         } catch (IOException e) {
-
+            System.out.println("取消失败!");
         }
     }
 
-    public void backup(File file) throws IOException {
-        File backFile = new File(file.getName() + ".bak");
-        copy(file, backFile);
-
-    }
-
-    private void copy(File sourceFile, File destFile) throws IOException{
-        if(!destFile.exists()) {
-            destFile.createNewFile();
-        }
-
-        FileChannel source = null;
-        FileChannel destination = null;
-
-        try {
-            source = new FileInputStream(sourceFile).getChannel();
-            destination = new FileOutputStream(destFile).getChannel();
-            destination.transferFrom(source, 0, source.size());
-        }
-        finally {
-            if(source != null) {
-                source.close();
-            }
-            if(destination != null) {
-                destination.close();
-            }
-        }
-    }
     public boolean isBlock(String s) {
         Pattern pattern = Pattern.compile("127\\.0\\.0\\.1\\s+w.+");
         Matcher matcher = pattern.matcher(s);
