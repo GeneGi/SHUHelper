@@ -1,4 +1,4 @@
-﻿//发送文件、接收文件两个显示面板
+//发送文件、接收文件两个显示面板
 package trans;
 
 import javax.swing.*;

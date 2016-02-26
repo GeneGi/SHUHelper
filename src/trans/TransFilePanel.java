@@ -1,4 +1,4 @@
-﻿//接收文件面板右下角放的“接收”、“取消”、“关闭”三个按钮的JPanel面板
+//接收文件面板右下角放的“接收”、“取消”、“关闭”三个按钮的JPanel面板
 package trans;
 
 import javax.swing.JPanel;

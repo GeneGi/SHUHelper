@@ -1,4 +1,4 @@
-﻿//“发送文件”按钮对话框
+//“发送文件”按钮对话框
 package trans;
 
 import javax.swing.JDialog;

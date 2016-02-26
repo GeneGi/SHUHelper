@@ -1,4 +1,4 @@
-﻿//服务器端
+//服务器端
 package trans;
 
 import java.io.*;

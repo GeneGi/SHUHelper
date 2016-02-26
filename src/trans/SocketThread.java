@@ -1,4 +1,4 @@
-﻿//socket线程
+//socket线程
 package trans;
 
 import java.net.Socket;

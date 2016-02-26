@@ -1,4 +1,4 @@
-﻿//主窗口
+//主窗口
 package trans;
 
 import java.awt.*;

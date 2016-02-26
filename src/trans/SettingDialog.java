@@ -1,4 +1,4 @@
-﻿//“设置”按钮对话框
+//“设置”按钮对话框
 package trans;
 
 import javax.swing.JDialog;
