@@ -114,7 +114,6 @@ public class SiteBlocker extends JFrame{
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "没有足够的权限,请使用管理员权限运行");
         }
-
     }
 
     private void unblockSite(String site) {

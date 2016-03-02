@@ -30,7 +30,7 @@ public class HelperMain extends JFrame {
             WhatToEatToday whatToEatToday = new WhatToEatToday();
         }));
         EncryptedMessageButton.addActionListener(e -> SwingUtilities.invokeLater(() -> {
-            EncryptedMessage encryptedMessage = new EncryptedMessage();
+            RSAChinese rsaChinese = new RSAChinese();
         }));
         ShareFileButton.addActionListener(e -> SwingUtilities.invokeLater(() -> {
             ShareFile shareFile = new ShareFile();
