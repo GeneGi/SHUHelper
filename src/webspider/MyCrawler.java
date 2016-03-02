@@ -1,6 +1,11 @@
 package webspider;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Set;
-public class MyCrawler {
+
+
+public class MyCrawler extends JFrame{
  /**
   * 使用种子初始化 URL 队列
   * 
@@ -8,6 +13,39 @@ public class MyCrawler {
   * @param seeds
   *            种子URL
   */
+	
+	
+	JFrame table =new JFrame();
+	JPanel pane =new JPanel();
+	JTextField input =new JTextField("http://zhidao.baidu.com/");
+	JButton OK=new JButton("确定");
+	MyCrawler(){
+		table.setTitle("随便看看");
+		table.setVisible(true);
+		table.setSize(400,400);
+		table.setResizable(false);
+		table.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		table.add(pane);
+		pane.add(input);
+		pane.add(OK);
+		String[] seeds={"http://zhidao.baidu.com/"};
+		
+		
+		
+		OK.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent ae){
+				
+				seeds[0]=input.getText();
+				crawling(seeds);
+				
+			}
+		});
+	}
+	
+	
+	
+	
  private void initCrawlerWithSeeds(String[] seeds) {
   for (int i = 0; i < seeds.length; i++)
    LinkQueue.addUnvisitedUrl(seeds[i]);
@@ -21,7 +59,7 @@ public class MyCrawler {
  public void crawling(String[] seeds) { // 定义过滤器，提取以http://www.lietu.com开头的链接
   LinkFilter filter = new LinkFilter() {
    public boolean accept(String url) {
-    if (url.startsWith("http://www.baidu.com"))
+    if (url.startsWith("http://zhidao.baidu.com/"))
      return true;
     else
      return false;
@@ -49,9 +87,13 @@ public class MyCrawler {
    }
   }
  }
+ public void show(){
+		table.show();
+	}
  // main 方法入口
  public static void main(String[] args) {
-  MyCrawler crawler = new MyCrawler();
-  crawler.crawling(new String[] { "http://www.baidu.com" });
+	 MyCrawler a=new MyCrawler();
+	 a.show();
+  
  }
 }

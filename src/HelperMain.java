@@ -27,7 +27,7 @@ public class HelperMain extends JFrame {
         add(SiteBlockerButton);
 
         WhatToEatButton.addActionListener(e -> SwingUtilities.invokeLater(() -> {
-            WhatToEatToday whatToEatToday = new WhatToEatToday();
+
         }));
         EncryptedMessageButton.addActionListener(e -> SwingUtilities.invokeLater(() -> {
             RSAChinese rsaChinese = new RSAChinese();
