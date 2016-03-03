@@ -1,3 +1,5 @@
+import webspider.MyCrawler;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,10 +14,10 @@ public class HelperMain extends JFrame {
         setTitle("SHU Helper");
         setSize(600, 400);
 
-        JButton WhatToEatButton = new JButton("今天吃什么");
+        JButton WhatToEatButton = new JButton("点菜系统");
         JButton EncryptedMessageButton = new JButton("秘密短信");
         JButton ShareFileButton = new JButton("文件共享");
-        JButton LookAroundButton = new JButton("随便看看");
+        JButton LookAroundButton = new JButton("网络爬虫");
         JButton ChatRoomButton = new JButton("聊天室");
         JButton SiteBlockerButton = new JButton("网站屏蔽器");
 
@@ -27,16 +29,16 @@ public class HelperMain extends JFrame {
         add(SiteBlockerButton);
 
         WhatToEatButton.addActionListener(e -> SwingUtilities.invokeLater(() -> {
-            WhatToEatToday whatToEatToday = new WhatToEatToday();
+            orderMenu orderMenu = new orderMenu();
         }));
         EncryptedMessageButton.addActionListener(e -> SwingUtilities.invokeLater(() -> {
-            EncryptedMessage encryptedMessage = new EncryptedMessage();
+            RSAChinese rsaChinese = new RSAChinese();
         }));
         ShareFileButton.addActionListener(e -> SwingUtilities.invokeLater(() -> {
             ShareFile shareFile = new ShareFile();
         }));
         LookAroundButton.addActionListener(e -> SwingUtilities.invokeLater(() -> {
-            LookAround lookAround = new LookAround();
+            MyCrawler crawler = new MyCrawler();
         }));
         ChatRoomButton.addActionListener(e -> {
             Thread thread = new Thread(new ChatRoomClient());
