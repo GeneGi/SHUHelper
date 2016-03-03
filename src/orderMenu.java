@@ -27,7 +27,6 @@ public class orderMenu extends JFrame{
 	JLabel label=new JLabel();
 	int sum=0;
 	orderMenu(){
-		
 		frame.setTitle("点菜系统");
 		frame.setVisible(true);
 		frame.setSize(400,400);
@@ -40,8 +39,7 @@ public class orderMenu extends JFrame{
 		foodtable.setBackground(Color.PINK);
 //		f1.setBackground(Color.PINK);
 		Imagelabel.setBounds(0, 0, f1.getWidth(), f1.getHeight());
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		
 		 foodtable.add(mifan);
 	     foodtable.add(yuxiangrousi);
@@ -186,11 +184,7 @@ public class orderMenu extends JFrame{
 		});
 		
 	}
-	public void show(){
-		frame.show();
-	}
-	
-	
+
 	public static void main(String args[]){
 		orderMenu a=new orderMenu();
 		a.show();

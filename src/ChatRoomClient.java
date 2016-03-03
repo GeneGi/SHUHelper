@@ -24,6 +24,8 @@ public class ChatRoomClient extends JFrame implements Runnable{
         messageArea = new JTextArea();
         stateArea = new JTextArea();
         inputField.setEditable(false);
+
+        messageArea.setLineWrap(true);
         messageArea.setEditable(false);
         stateArea.setEditable(false);
         send = new JButton("发送");

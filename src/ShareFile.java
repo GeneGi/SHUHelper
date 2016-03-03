@@ -1,10 +1,9 @@
 //程序入口
 
-import java.awt.Toolkit;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import java.awt.Dimension;
-import trans.*;
+import trans.MainFrame;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class ShareFile {
     boolean packFrame = false;
@@ -37,13 +36,6 @@ public class ShareFile {
     	// 创建事件分发线程
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    UIManager.setLookAndFeel(UIManager.
-                                             getSystemLookAndFeelClassName());
-                } catch (Exception exception) {
-                    exception.printStackTrace();
-                }
-
                 new ShareFile();
             }
         });

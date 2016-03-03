@@ -1,14 +1,14 @@
 //主窗口
 package trans;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import java.net.InetAddress;
-import java.util.*;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.net.InetAddress;
 
 public class MainFrame extends JFrame {
     JPanel contentPane;
@@ -20,7 +20,6 @@ public class MainFrame extends JFrame {
     
     public MainFrame() {
         try {
-            setDefaultCloseOperation(EXIT_ON_CLOSE);
             jbInit();
         } catch (Exception exception) {
             exception.printStackTrace();
